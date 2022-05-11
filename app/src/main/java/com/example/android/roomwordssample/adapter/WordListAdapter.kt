@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.roomwordssample
+package com.example.android.roomwordssample.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -23,7 +23,9 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.android.roomwordssample.WordListAdapter.WordViewHolder
+import com.example.android.roomwordssample.R
+import com.example.android.roomwordssample.adapter.WordListAdapter.WordViewHolder
+import com.example.android.roomwordssample.models.Word
 
 class WordListAdapter : ListAdapter<Word, WordViewHolder>(WORDS_COMPARATOR) {
 

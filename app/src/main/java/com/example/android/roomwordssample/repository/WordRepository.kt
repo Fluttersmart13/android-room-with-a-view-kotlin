@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.android.roomwordssample
+package com.example.android.roomwordssample.repository
 
 import androidx.annotation.WorkerThread
+import com.example.android.roomwordssample.dao.WordDao
+import com.example.android.roomwordssample.models.Word
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -36,4 +38,7 @@ class WordRepository(private val wordDao: WordDao) {
     suspend fun insert(word: Word) {
         wordDao.insert(word)
     }
+
+
+
 }

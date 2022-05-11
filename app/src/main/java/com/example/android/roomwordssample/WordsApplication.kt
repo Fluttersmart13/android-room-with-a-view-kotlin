@@ -17,6 +17,8 @@
 package com.example.android.roomwordssample
 
 import android.app.Application
+import com.example.android.roomwordssample.dao.WordRoomDatabase
+import com.example.android.roomwordssample.repository.WordRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 

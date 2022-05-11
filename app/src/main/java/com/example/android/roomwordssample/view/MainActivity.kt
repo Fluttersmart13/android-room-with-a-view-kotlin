@@ -14,22 +14,31 @@
  * limitations under the License.
  */
 
-package com.example.android.roomwordssample
+package com.example.android.roomwordssample.view
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Environment.getExternalStorageDirectory
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.observe
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.android.roomwordssample.*
+import com.example.android.roomwordssample.adapter.WordListAdapter
+import com.example.android.roomwordssample.models.Word
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
 
+
     private val newWordActivityRequestCode = 1
+    lateinit var context: Context
     private val wordViewModel: WordViewModel by viewModels {
         WordViewModelFactory((application as WordsApplication).repository)
     }
@@ -37,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        context = this
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
         val adapter = WordListAdapter()
         recyclerView.adapter = adapter
@@ -57,6 +66,64 @@ class MainActivity : AppCompatActivity() {
             // Update the cached copy of the words in the adapter.
             words.let { adapter.submitList(it) }
         }
+
+        getMethod()
+
+        try{
+            val appDirctory =File(getExternalStorageDirectory().absolutePath + "/cdp_image")
+            appDirctory.mkdirs()
+        }catch ( e:Exception){
+            Log.d("iamge",e.message.toString())
+        }
+        callApi();
+
+    }
+
+    private fun callApi() {
+//        RetrofitClient(context).instance.getAllTodo().enqueue(object :
+//            Callback<ToDo> {
+//            override fun onResponse(
+//                call: Call<ToDo>,
+//                response: Response<ToDo>
+//            ) {
+//                if (response.isSuccessful) {
+//                   println("response_success")
+//                } else {
+//                    println("response_fail")
+//                }
+//            }
+//            override fun onFailure(call: Call<ToDo>, t: Throwable) {
+//                println("response_fail")
+//            }
+//        })
+    }
+
+    private fun getMethod() {
+        var str = "Hello World"
+        str.let { println("$it!!") }
+        println(str)
+
+        var a = 1
+        var b= 2
+
+        a = a.let { it + 2 }.let { val i = it + b
+            i}
+
+        println(a)
+
+
+        //var x = "Anupam"
+        //x.let { outer -> outer.let { inner -> print("Inner is $inner and outer is $outer") } }
+
+        var x = "Anupam"
+        x = x.let { outer ->
+            outer.let { inner ->
+                println("Inner is $inner and outer is $outer")
+                "Kotlin Tutorials Inner let"
+            }
+            "Kotlin Tutorials Outer let"
+        }
+        println(x)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
