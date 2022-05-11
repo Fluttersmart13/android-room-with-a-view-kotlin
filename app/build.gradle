@@ -32,6 +32,18 @@ android {
     dataBinding {
         enabled = true
     }
+
+    flavorDimensions 'client'
+    productFlavors {
+        company {
+            applicationId 'com.cdpindia.DeloitteOfficeView'
+            resValue "string", "app_name", "MMVM"
+        }
+        companyDevelopment {
+            applicationId 'com.cdpindia.DeloitteOfficeView.dev'
+            resValue "string", "app_name", "MVVM_KOTLIN"
+        }
+    }
 }
 
 repositories {
@@ -81,4 +93,5 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:4.9.0"
     kapt "com.github.bumptech.glide:compiler:4.9.0"
 }
+
 

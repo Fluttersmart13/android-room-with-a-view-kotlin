@@ -38,5 +38,22 @@ limitations under the License. -->
         android:text="@string/button_save"
         android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
+    <Button
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="recyclerview"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
+
+    <Button
+        android:id="@+id/alertBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="Alert"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
 
 </LinearLayout>

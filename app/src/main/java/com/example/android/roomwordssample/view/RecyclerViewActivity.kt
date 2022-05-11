@@ -13,7 +13,6 @@ import com.example.android.roomwordssample.adapter.Developer_CustomAdapter
 import com.example.android.roomwordssample.databinding.ActivityRecyclerViewBinding
 import com.example.android.roomwordssample.models.DeveloperModel
 import com.example.android.roomwordssample.viewmodels.DeveloperViewModel
-import java.util.ArrayList
 
 class RecyclerViewActivity: AppCompatActivity() {
 
@@ -41,6 +40,11 @@ class RecyclerViewActivity: AppCompatActivity() {
         //set the CustomAdapter
         recyclerView.setAdapter(mDeveloper_CustomAdapter)
 
+        assert(
+            supportActionBar != null //null check
+        )
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+
         getAllDev()
     }
 
@@ -53,4 +57,10 @@ class RecyclerViewActivity: AppCompatActivity() {
                 loadBar?.visibility = View.GONE
             })
     }
+    override fun onSupportNavigateUp(): Boolean {
+        finish()
+        return true
+    }
 }
+
+

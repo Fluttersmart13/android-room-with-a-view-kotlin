@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.example.android.roomwordssample
+package com.example.android.roomwordssample.view
 
 import android.app.Activity
 import android.content.Intent
@@ -23,12 +23,13 @@ import android.text.TextUtils
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.example.android.roomwordssample.R
 
 /**
  * Activity for entering a word.
  */
 
-class NewWordActivity : AppCompatActivity() {
+class NewWordActivity : BaseActivity() {
 
     public override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +37,18 @@ class NewWordActivity : AppCompatActivity() {
         val editWordView = findViewById<EditText>(R.id.edit_word)
 
         val button = findViewById<Button>(R.id.button_save)
+        val recyclerview = findViewById<Button>(R.id.recyclerview)
+        val alertBox = findViewById<Button>(R.id.alertBox)
+
+        recyclerview.setOnClickListener {
+            val intent = Intent(this, RecyclerViewActivity::class.java)
+            startActivity(intent)
+        }
+
+        alertBox.setOnClickListener {
+            showShortToast("Alert")
+            showAlertOk("title","description","ok")
+        }
         button.setOnClickListener {
             val replyIntent = Intent()
             if (TextUtils.isEmpty(editWordView.text)) {
