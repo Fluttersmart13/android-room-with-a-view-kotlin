@@ -56,4 +56,13 @@ limitations under the License. -->
         android:layout_margin="@dimen/big_padding"
         android:textColor="@color/buttonLabel" />
 
+    <Button
+        android:id="@+id/deleteAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:text="DeleteAll"
+        android:layout_margin="@dimen/big_padding"
+        android:textColor="@color/buttonLabel" />
+
 </LinearLayout>

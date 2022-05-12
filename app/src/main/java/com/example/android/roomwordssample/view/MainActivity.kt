@@ -130,9 +130,14 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, intentData)
 
         if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
-            intentData?.getStringExtra(NewWordActivity.EXTRA_REPLY)?.let { reply ->
-                val word = Word(reply)
-                wordViewModel.insert(word)
+
+            intentData?.getStringExtra(NewWordActivity.EXTRA_SAVE)?.let { reply ->
+                if(reply.equals("delete")){
+                    wordViewModel.deleteAll()
+                }else{
+                    val word = Word(reply,"Y")
+                    wordViewModel.insert(word)
+                }
             }
         } else {
             Toast.makeText(

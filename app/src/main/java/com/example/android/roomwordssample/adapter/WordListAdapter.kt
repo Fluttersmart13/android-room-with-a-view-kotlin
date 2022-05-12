@@ -35,7 +35,7 @@ class WordListAdapter : ListAdapter<Word, WordViewHolder>(WORDS_COMPARATOR) {
 
     override fun onBindViewHolder(holder: WordViewHolder, position: Int) {
         val current = getItem(position)
-        holder.bind(current.word)
+        holder.bind(current.word+current.is_active)
     }
 
     class WordViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

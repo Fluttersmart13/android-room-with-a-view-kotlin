@@ -39,10 +39,18 @@ class NewWordActivity : BaseActivity() {
         val button = findViewById<Button>(R.id.button_save)
         val recyclerview = findViewById<Button>(R.id.recyclerview)
         val alertBox = findViewById<Button>(R.id.alertBox)
+        val deleteAll = findViewById<Button>(R.id.deleteAll)
 
         recyclerview.setOnClickListener {
             val intent = Intent(this, RecyclerViewActivity::class.java)
             startActivity(intent)
+        }
+
+        deleteAll.setOnClickListener {
+            val replyIntent = Intent()
+            replyIntent.putExtra(EXTRA_SAVE, "delete")
+            setResult(Activity.RESULT_OK, replyIntent)
+            finish()
         }
 
         alertBox.setOnClickListener {
@@ -55,7 +63,7 @@ class NewWordActivity : BaseActivity() {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
                 val word = editWordView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, word)
+                replyIntent.putExtra(EXTRA_SAVE, word)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
@@ -63,6 +71,6 @@ class NewWordActivity : BaseActivity() {
     }
 
     companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
+        const val EXTRA_SAVE = "save"
     }
 }
